@@ -3,8 +3,21 @@
 bool isArmstrongNumber(int number)
 {
 	// TODO: implement some functionality to see if this number is an armstrong number
+	int dividedNumber = number;
+	int calculatedNumber = 0;
 
-	return false;
+	while (dividedNumber > 0) {
+		//std::cout << dividedNumber % 10 << " ^ 3 = " << pow((dividedNumber % 10), 3) << std::endl;///////////////////
+		calculatedNumber = calculatedNumber + pow((dividedNumber % 10), 3);
+		dividedNumber = dividedNumber / 10;
+	}
+
+	//std::cout << "Calculated: "<< calculatedNumber << std::endl;///////////////////
+
+	if (calculatedNumber == number)
+		return true;
+	else
+		return false;
 }
 
 void printIsArmstrong(int number)
@@ -19,6 +32,14 @@ void printIsArmstrong(int number)
 	}
 }
 
+//////////////////////////////
+//void printArmstrongNumbers(int upTo) {
+//	for (int i = 0; i <= upTo; i++) {
+//		if(isArmstrongNumber(i))
+//			std::cout << i << std::endl;///////////////////
+//	}
+//}
+///////////////////////////////
 int main(int argc, char *argv[])
 {
 	// What is this program expected to do?
@@ -52,6 +73,16 @@ int main(int argc, char *argv[])
 	std::string argumentAsString = argv[1];
 	
 	// TODO: read number / cast to integer
+	if (atoi(argv[1]) == 0)
+	{
+		std::cout << "Undefined output." << std::endl;
+		return 0;
+	}
+	readNumber = atoi(argv[1]);
+
+	/////////////////////////////////
+	//printArmstrongNumbers(1000000000);
+	/////////////////////////////////
 
 	printIsArmstrong(readNumber);
 	return 0;

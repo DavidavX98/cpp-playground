@@ -3,7 +3,7 @@
 
 // Define the maximum length for the name to use.
 // Specify the length of characters in the content (Excluding the terminator).
-#define MAX_NAME_LEN 10
+#define MAX_NAME_LEN 20
 #define MAX_TITLE_LEN 50
 
 struct Author
@@ -12,21 +12,21 @@ struct Author
 
 	void setName(char nameToSet[MAX_NAME_LEN])
 	{
-		strncpy(name, nameToSet, MAX_NAME_LEN);
+		strncpy_s(name, MAX_NAME_LEN + 1, nameToSet, MAX_NAME_LEN);
 		// overwrite the last character
 		name[MAX_NAME_LEN] = 0;
 	}
 
 	void print()
 	{
-		std::cout << name << std::endl;
+		std::cout << "- " << name << std::endl;
 	}
 };
 
 struct Book
 {
 	int id;
-	char title[50];
+	char title[MAX_TITLE_LEN + 1];
 
 	int numAuthors;
 	Author authors[5];
@@ -34,6 +34,7 @@ struct Book
 	void addAuthor(Author author)
 	{
 		// TODO: add an author to the container authors array.
+		authors[numAuthors] = author;
 		numAuthors++;
 	}
 
@@ -44,13 +45,18 @@ struct Book
 		std::cout << this->title << std::endl;
 
 		// TODO: add all authors
+		std::cout << "\nAuthors:" << std::endl;
 
+		for (int i = 0; i < numAuthors; i++) {
+			authors[i].print();
+		}
+		std::cout << "\n\n";
 	}
 };
 
 void setBookName(Book& book, std::string name)
 {
-	strncpy(book.title, name.c_str(), MAX_TITLE_LEN);
+	strncpy_s(book.title, MAX_TITLE_LEN + 1, name.c_str(), MAX_TITLE_LEN);
 	// overwrite the last character
 	book.title[MAX_TITLE_LEN] = 0;
 }
@@ -60,6 +66,7 @@ int main()
 	Book book1;
 	Book book2;
 	Book book3;
+	Book book4;
 	Author author;
 
 	// Load the data into books
@@ -87,9 +94,16 @@ int main()
 	author.setName("Anna Rosling Ronnlund");
 	book3.addAuthor(author);
 
+	book4.id = 4;
+	book4.numAuthors = 0;
+	setBookName(book4, "Around the World in Eighty Days");
+	author.setName("Jules Verne");
+	book4.addAuthor(author);
+
 	// Display the books
 	book1.print();
 	book2.print();
 	book3.print();
+	book4.print();
 	return 0;
 }
