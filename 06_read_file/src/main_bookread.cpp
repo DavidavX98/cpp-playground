@@ -46,13 +46,13 @@ std::vector<Book> readBooksFromTextFile(const std::string& file_name)
 	
 	while (std::getline(infile, line))
 	{
-		std::cout << line<<std::endl;
+		//std::cout << line<<std::endl;
 		if (i % 2 == 0) {
 			book.name = line;
 		}
 		else {
 			book.authors = line;
-			results.insert(results.end(), book);
+			results.emplace_back(book);
 		}
 		i++;
 	}
