@@ -32,14 +32,6 @@ void printIsArmstrong(int number)
 	}
 }
 
-//////////////////////////////
-//void printArmstrongNumbers(int upTo) {
-//	for (int i = 0; i <= upTo; i++) {
-//		if(isArmstrongNumber(i))
-//			std::cout << i << std::endl;///////////////////
-//	}
-//}
-///////////////////////////////
 int main(int argc, char *argv[])
 {
 	// What is this program expected to do?
@@ -73,17 +65,12 @@ int main(int argc, char *argv[])
 	std::string argumentAsString = argv[1];
 	
 	// TODO: read number / cast to integer
-	if (atoi(argv[1]) == 0)
+	if (atoi(argv[1]) == 0 && argumentAsString != "0")
 	{
 		std::cout << "Undefined output." << std::endl;
 		return 0;
 	}
 	readNumber = atoi(argv[1]);
-
-	/////////////////////////////////
-	//printArmstrongNumbers(1000000000);
-	/////////////////////////////////
-
 	printIsArmstrong(readNumber);
 	return 0;
 }
