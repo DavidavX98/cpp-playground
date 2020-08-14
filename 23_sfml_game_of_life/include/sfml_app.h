@@ -7,7 +7,7 @@
 // SFML headers
 
 #include "SFML/Graphics.hpp"
-#include "../../build/23_sfml_game_of_life/Game.h"
+#include "Game.h"
 
 class SfmlApp
 {
