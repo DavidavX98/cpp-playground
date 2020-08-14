@@ -44,18 +44,6 @@ public:
 		else if (pattern == "Pentadecathlon") pentaPatt(x, y);
 		else if (pattern == "Glider") gliderPatt(x, y);
 
-		/*switch (pattern)
-		{
-		case "Block":blockPatt(x, y);	break;
-		case "Boat":boatPatt(x, y);			break;
-		case 3:blinkerPatt(x, y);		break;
-		case 4:beaconPatt(x, y);		break;
-		case 5:pulsarPatt(x, y);		break;
-		case 6:pentaPatt(x, y);			break;
-		case 7:gliderPatt(x, y);		break;
-		default:						break;
-		}*/
-
 		lastMatrix = matrix;
 	}
 
